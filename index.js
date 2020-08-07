@@ -85,9 +85,73 @@ controller.on('bot_channel_join', function (bot, message) {
     bot.reply(message, "I'm here!")
 });
 
-controller.hears('hello', 'direct_message', function (bot, message) {
+controller.hears(['hello','hi'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
     bot.reply(message, 'Hello!');
 });
+
+controller.hears(['How are you?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.reply(message, 'I am well. Thanks for asking');
+});
+
+controller.hears(['How do I set up my dev environment for Mobile SDK?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, 'https://github.com/SurveyMonkey/surveymonkey-android-sdk/blob/master/README.mdg');
+});
+
+controller.hears(['Where can I find the system architecture?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, 'https://treehouse.surveymonkey.com/display/eng/Architecture');
+});
+controller.hears(['How do I page the billing team?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, 'use ```/oncall-billing``` Do it NOW we dont want to miss out on any of that Cha ching!');
+});
+controller.hears(['When is the next deployment freeze?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, 'Friday August 7th. Hold your horses, we dont want you to ship and ruin your weekend and mine with an incident save it for Monday');
+});
+controller.hears(['Who should I contact in Usabilla?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, '@GregJohnson');
+});
+controller.hears(['What is the % of COs completed?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, '15%. We just are getting warmed up. 7 more weeks to the end of the quarter. Hang in there we will get there. For more details go to https://treehousle.surveymonkey.com/display/pm/2020+Q3+crtitical+Objectivies ');
+});
+controller.hears(['How many P1 customer bugs do we have?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, '0 critical bugs. Yay for happy customers ');
+});
+
+controller.hears(['What is the guest wifi password?'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, '$urfTh3W3b!');
+});
+
+controller.hears(['save'], ['direct_mention', 'mention', 'direct_message'], function (bot, message) {
+    bot.replyInThread(message, 'Thanks for making me smarter. Now I can help others with the same question without bothering anyone.');
+});
+controller.hears(['.*[?][ ?]*$'], 'direct_message', function(bot, message) {
+    bot.replyInThread(message, 'Sorry I do not know the answer to that!! \n I am very curious to know the answer as well so I can help the next time.\n @here can someone answer this.');
+});
+
+
+
+
+
+
+// controller.hears(['.*'], 'direct_message', function(bot, message) {
+
+//     bot.replyInThread(message, {
+//         attachments:[
+//             {
+//                 title: 'Sorry I do not know the answer to that!! \n I am very curious to know the answer as well so I can help the next time.\n @here can someone answer this.',
+//                 callback_id: '123',
+//                 attachment_type: 'default',
+//                 actions: [
+//                     {
+//                         "name":"answer",
+//                         "text": "answer",
+//                         "value": "answer",
+//                         "type": "button",
+//                     }
+//                 ]
+//             }
+//         ]
+//     });
+// });
 
 
 /**
@@ -106,3 +170,4 @@ controller.hears('hello', 'direct_message', function (bot, message) {
 //        bot.reply(message, 'I heard you loud and clear boss.');
 //    });
 //});
+
